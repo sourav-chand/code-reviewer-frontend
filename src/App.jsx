@@ -22,75 +22,74 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState("javascript");
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [showSettings, setShowSettings] = useState(false);
+  // const [showSettings, setShowSettings] = useState(false);
   const textareaRef = useRef(null);
 
   // Mock AI review function - replace with your actual API call
   const getAIReview = async (code) => {
- try {
-  setIsLoading(true);
-  const response = await axios.post(import.meta.env.VITE_API_URL, { code });
+    try {
+      setIsLoading(true);
+      const response = await axios.post(import.meta.env.VITE_API_URL, { code });
 
-  // response.data is coming like "```json {...} ```"
-  let rawData = response.data;
+      // response.data is coming like "```json {...} ```"
+      let rawData = response.data;
 
-  // Remove ```json and ``` if present
-  rawData = rawData.replace(/```json|```/g, "").trim();
+      // Remove ```json and ``` if present
+      rawData = rawData.replace(/```json|```/g, "").trim();
 
-  // Convert string to JS object
-  const parsedData = JSON.parse(rawData);
+      // Convert string to JS object
+      const parsedData = JSON.parse(rawData);
 
-  console.log("Parsed API Response as object:", parsedData);
+      // console.log("Parsed API Response as object:", parsedData);
 
-  // Now you can use parsedData.status, parsedData.issues, etc.
-  setIsLoading(false);
-  
-  return parsedData; // <-- returning object instead of raw response
-} catch (error) {
-  setIsLoading(false);
-  console.error(error);
-}
+      // Now you can use parsedData.status, parsedData.issues, etc.
+      setIsLoading(false);
 
-    
-//     // Simulating API call delay
-//     await new Promise((resolve) => setTimeout(resolve, 2000));
+      return parsedData; // <-- returning object instead of raw response
+    } catch (error) {
+      setIsLoading(false);
+      console.error(error);
+    }
 
-//     // Mock review response based on the code
-//     return {
-//       status: "issues_found",
-//       issues: [
-//         {
-//           type: "error",
-//           title: "Lack of documentation",
-//           description:
-//             "There is no documentation explaining the function's purpose, inputs, or outputs.",
-//           line: 1,
-//         },
-//         {
-//           type: "error",
-//           title: "Inflexibility",
-//           description:
-//             "The function only returns the sum of 1 + 1. It cannot be used to sum other numbers.",
-//           line: 2,
-//         },
-//         {
-//           type: "warning",
-//           title: "No clear return type",
-//           description:
-//             "While JavaScript is dynamically typed, it's good practice to consider what the function returns.",
-//           line: 2,
-//         },
-//       ],
-//       suggestions: `/**
-//  * Calculates the sum of two numbers.
-//  * @param {number} a - The first number.
-//  * @param {number} b - The second number.
-//  * @returns {number} The sum of a and b.
-//  */
-// function sum(a, b) {
-//   return a + b;
-// }`,
-//     };
+    //     // Simulating API call delay
+    //     await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    //     // Mock review response based on the code
+    //     return {
+    //       status: "issues_found",
+    //       issues: [
+    //         {
+    //           type: "error",
+    //           title: "Lack of documentation",
+    //           description:
+    //             "There is no documentation explaining the function's purpose, inputs, or outputs.",
+    //           line: 1,
+    //         },
+    //         {
+    //           type: "error",
+    //           title: "Inflexibility",
+    //           description:
+    //             "The function only returns the sum of 1 + 1. It cannot be used to sum other numbers.",
+    //           line: 2,
+    //         },
+    //         {
+    //           type: "warning",
+    //           title: "No clear return type",
+    //           description:
+    //             "While JavaScript is dynamically typed, it's good practice to consider what the function returns.",
+    //           line: 2,
+    //         },
+    //       ],
+    //       suggestions: `/**
+    //  * Calculates the sum of two numbers.
+    //  * @param {number} a - The first number.
+    //  * @param {number} b - The second number.
+    //  * @returns {number} The sum of a and b.
+    //  */
+    // function sum(a, b) {
+    //   return a + b;
+    // }`,
+    //     };
   };
 
   const handleReview = async () => {
@@ -307,7 +306,7 @@ const App = () => {
 
           {/* Review Results Panel */}
           <div
-            className={`border rounded-xl transition-colors ${cardClasses} flex flex-col`}
+            className={`border rounded-xl transition-colors ${cardClasses} flex  flex-col`}
           >
             <div className="flex items-center justify-between p-4 border-b border-opacity-50">
               <div className="flex items-center space-x-2">
