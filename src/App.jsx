@@ -15,9 +15,7 @@ import {
 import axios from "axios";
 
 const App = () => {
-  const [code, setCode] = useState(`function sum() {
-  return 1 + 1
-}`);
+  const [code, setCode] = useState(``);
   const [review, setReview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState("javascript");
