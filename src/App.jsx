@@ -44,7 +44,7 @@ const App = () => {
 
   // Now you can use parsedData.status, parsedData.issues, etc.
   setIsLoading(false);
-  console.log(parsedData)
+  
   return parsedData; // <-- returning object instead of raw response
 } catch (error) {
   setIsLoading(false);
